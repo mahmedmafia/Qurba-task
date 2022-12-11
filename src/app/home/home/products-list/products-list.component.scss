@@ -59,17 +59,15 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  span{
+  span {
     color: #f4b000;
     margin-right: 3px;
     font-weight: 700;
-
   }
   #start-svg {
     margin-top: 5px;
     margin-right: 2px;
-  font-weight: 700;
-
+    font-weight: 700;
   }
 }
 .img-container {
@@ -99,7 +97,25 @@
   color: #344054 !important;
   cursor: default;
 }
-.btn-primary{
-    border-radius: 4px !important;
-    margin-top: 10px;
+.btn-primary {
+  border-radius: 4px !important;
+  margin-top: 10px;
+}
+#paging {
+  display: flex;
+  justify-content: center;
+  padding: 20px 0px 10px 0px;
+  > span {
+    display: inline-block;
+    margin: 0px 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    &:not(.selected):hover{
+      @include actionButtonHover;
+    }
+    &.selected {
+      @include actionButton;
+      cursor: default;
+    }
+  }
 }

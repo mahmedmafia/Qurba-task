@@ -10,7 +10,7 @@ export class CategoryService {
   private AllCategories = environment.api + '/products/categories';
   private categoryApi = environment.api + '/products/category';
   constructor(private http: HttpClient) { }
-  getAllCategories():Observable<CategoryInfo[]> {
+  getAllCategories():Observable<{data:CategoryInfo[],total:number}> {
     return this.http.get<string[]>(this.AllCategories).pipe(
       mergeMap(x => from(x)),
       mergeMap(h=> this.getProductCategoriesCount(h).pipe(map(categoryInfo=>{
@@ -19,7 +19,11 @@ export class CategoryService {
           count:categoryInfo.total,
         }
       }))),
-      toArray(),
+      reduce((object:any,val)=>{
+        object.data=[...object.data,val];
+        object.total+=val.count;
+        return object;
+      },{data:[],total:0}),
     );
   }
   getProductCategoriesCount(category: string) {

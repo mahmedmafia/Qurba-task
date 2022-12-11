@@ -1,0 +1,24 @@
+:host {
+  cursor: pointer;
+  position: relative;
+  width: 30px;
+  height: 30px;
+}
+.badge-primary {
+    right: 0;
+    top: -11px;
+    padding: 0px 2px;
+    font-size: 10px;
+    border-radius: 50%;
+    position: absolute;
+    z-index: 1;
+    /* width: 100%; */
+    border: solid white 2px;
+}
+#cart-svg {
+  // top: 0px;
+  // right: 0px;
+  // bottom: 0px;
+  z-index: -1;
+  width: 100%;
+}

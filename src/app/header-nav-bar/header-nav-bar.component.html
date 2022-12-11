@@ -5,16 +5,31 @@
             <app-navbar-logo></app-navbar-logo>
             <h3>ClickTik</h3>
         </div>
-        <div class="nav-links-container d-flex justify-content-between">
+        <div class="nav-links-container d-flex justify-content-between align-center">
             <ul class="nav-links">
                 <li>
-                    <a [routerLink]="['/home']">home</a>
+                    <a [routerLink]="['/home']">Home</a>
                 </li>
             </ul>
             <ul class="nav-links">
+                <ng-container *ngIf="!userData;else elseTemplate">
                 <li>
                     <a [routerLink]="['/auth/login']">login</a>
                 </li>
+                </ng-container>
+                <ng-template #elseTemplate>
+                    <form *ngIf="searchForm" [formGroup]="searchForm" class="flex-row justify-content-between" id="searchForm">
+                        <div class="form-group" id="search-input" >
+                            <input type="text" placeholder="search" formControlName="searchTerm" >
+                            <app-search-glass-svg id="svg-search"></app-search-glass-svg>
+                        </div>
+                        <span id="cart-container">
+                            <app-cart-svg id="svg-cart"></app-cart-svg></span>
+                        <li>
+                            <a style="cursor:pointer;" >Account</a>
+                        </li>
+                    </form>
+                </ng-template>
             </ul>
         </div>
     </div>

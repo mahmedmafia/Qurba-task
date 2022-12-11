@@ -12,17 +12,20 @@ export class CategoryListComponent implements OnInit {
   cateogries: CategoryInfo[] = [];
   categoiesForm!: FormGroup
   selectedCategory:string='';
-  @Output() selectCategoryEvent=new EventEmitter();
+  totalProducts:number=0;
   constructor(private categoryServ: CategoryService,private productServ:ProductsService) { }
   ngOnInit(): void {
     const localCategories = localStorage.getItem('categories');
     if (!localCategories) {
       this.categoryServ.getAllCategories().subscribe(res => {
-        this.cateogries = res;
+        this.cateogries = res.data;
+        this.totalProducts=res.total;
         localStorage.setItem('categories', JSON.stringify(res));
       });
     } else {
-      this.cateogries = JSON.parse(localCategories);
+      const res = JSON.parse(localCategories);
+      this.totalProducts=res.total;
+      this.cateogries=res.data;
     }
 
     this.categoiesForm = new FormGroup({
@@ -30,15 +33,7 @@ export class CategoryListComponent implements OnInit {
     })
 
   }
-  onChooseCategory(event:any,category:string){
-    const isChecked=event.currentTarget.checked;
-    if(isChecked){
-      this.selectedCategory=category;
-
-    }else{
-     this.selectedCategory='';
-    }
-    this.selectCategoryEvent.emit(this.selectedCategory);
-    this.productServ.setCategory(this.selectedCategory);
+  onChooseCategory(category:string){
+    this.productServ.setCategory(category);
   }
 }

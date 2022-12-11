@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductsService } from 'src/app/shared/services/products.service';
 
 @Component({
   selector: 'app-home',
@@ -13,19 +14,20 @@ export class HomeComponent implements OnInit {
     SearchTerm: "",
   }
   keys: (keyof PathObject)[] = ["Home", "Type", "Category", "SearchTerm"];
-  constructor() { }
+  constructor(private prodServ:ProductsService) { }
 
   ngOnInit(): void {
+    this.prodServ.RroductPramsChanged.subscribe(res=>{
+      this.pathObject.Category=res?.category!;
+      this.pathObject.SearchTerm=res?.q!;
+    })
   }
-  onSelectCategory(category:string) {
-    this.pathObject.Category=category;
-    console.log(this.pathObject);
-  }
+
 
 }
 interface PathObject {
   Home: string,
   Type: string,
-  Category: string,
-  SearchTerm: string,
+  Category?: string,
+  SearchTerm?: string,
 }

@@ -1,13 +1,27 @@
 <div id="categories-list">
-    <p>Products</p>
-    <form *ngIf="categoiesForm" [formGroup]="categoiesForm">
-        <ul>
-            <li *ngFor="let categoryInfo of cateogries">
-                <input type="checkbox" [name]="categoryInfo.category"
-                formControlName="category"
-                [checked]="selectedCategory==categoryInfo.category" (click)="onChooseCategory($event,categoryInfo.category)">
-                {{categoryInfo.category}} ({{categoryInfo.count}})
-            </li>
-        </ul>
-    </form>
+  <p>Products</p>
+  <form *ngIf="categoiesForm && cateogries.length" [formGroup]="categoiesForm">
+    <ul>
+      <li>
+        <input
+          type="radio"
+          formControlName="category"
+          name="category"
+          value=""
+          (click)="onChooseCategory('')"
+        />
+        All Products ({{totalProducts}})
+      </li>
+      <li *ngFor="let categoryInfo of cateogries">
+        <input
+          type="radio"
+          name="category"
+          formControlName="category"
+          [value]="categoryInfo.category"
+          (click)="onChooseCategory(categoryInfo.category)"
+        />
+        {{ categoryInfo.category }} ({{ categoryInfo.count }})
+      </li>
+    </ul>
+  </form>
 </div>
