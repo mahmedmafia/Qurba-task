@@ -1,0 +1,47 @@
+@import "./theme.scss";
+
+.img-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: black;
+  top: 0;
+  left: 0;
+  opacity: 0.5;
+  z-index: 0;
+}
+
+.container {
+  margin: auto;
+  width: 80%;
+}
+.nav-links{
+    display: flex;
+}
+.form-group{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+a {
+  text-decoration: none;
+  color: $baseColorDark;
+  &:hover {
+    color: $light-baseColorDark !important;
+  }
+}
+.btn-primary{
+  @include actionButton;
+  width: 100%;
+  border: 0px;
+  padding: 10px 18px;
+}
+.badge-primary{
+  @include actionButton;
+  padding:4px 8px;
+  color:$baseColorDark;
+
+}
+.btn-primary:hover,.btn-primary:active{
+  @include actionButtonHover
+}

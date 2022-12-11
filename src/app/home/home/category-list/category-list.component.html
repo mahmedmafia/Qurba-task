@@ -1,0 +1,13 @@
+<div id="categories-list">
+    <p>Products</p>
+    <form *ngIf="categoiesForm" [formGroup]="categoiesForm">
+        <ul>
+            <li *ngFor="let categoryInfo of cateogries">
+                <input type="checkbox" [name]="categoryInfo.category"
+                formControlName="category"
+                [checked]="selectedCategory==categoryInfo.category" (click)="onChooseCategory($event,categoryInfo.category)">
+                {{categoryInfo.category}} ({{categoryInfo.count}})
+            </li>
+        </ul>
+    </form>
+</div>

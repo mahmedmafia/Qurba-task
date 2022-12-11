@@ -1,0 +1,29 @@
+$baseColor:#DCDBDE;
+$light-baseColor:#FFFF;
+$secondaryColor:#08B119;
+$primaryColor:#56D9D9;
+$baseColorDark:#344054;
+$fontSize:26px;
+$light-baseColorDark:#667085;
+$actionBtnRadius:8px;
+$cardBorderColor:#424242;
+
+@mixin backgroundTheme {
+  background-color: $light-baseColorDark;
+  color:$baseColorDark;
+}
+@mixin actionButton{
+  border-radius: $actionBtnRadius;
+  background-color: $primaryColor;
+  cursor: pointer;
+}
+@mixin actionButtonHover{
+  border-radius: $actionBtnRadius;
+  color: $primaryColor;
+  background-color: $baseColorDark;
+  cursor: pointer;
+}
+
+@mixin fillInput{
+  @include baseInput;
+}

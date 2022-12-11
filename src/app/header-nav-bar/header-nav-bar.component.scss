@@ -1,0 +1,21 @@
+nav {
+    position: relative;
+}
+nav::after{
+    position: absolute;
+    content: " ";
+    height: .5px;
+    width: 100%;
+    background-color: #424242;
+    opacity: .5;
+}
+.navbar-brand{
+    margin-right: 25px;
+}
+
+.nav-links-container{
+    width:85%;
+}
+.nav-links{
+    font-size: 1.2rem;
+}

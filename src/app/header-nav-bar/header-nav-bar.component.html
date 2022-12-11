@@ -1,0 +1,22 @@
+<nav>
+    <div class="container navbar d-flex align-center justify-content-between">
+
+        <div class="navbar-brand d-flex align-center">
+            <app-navbar-logo></app-navbar-logo>
+            <h3>ClickTik</h3>
+        </div>
+        <div class="nav-links-container d-flex justify-content-between">
+            <ul class="nav-links">
+                <li>
+                    <a [routerLink]="['/home']">home</a>
+                </li>
+            </ul>
+            <ul class="nav-links">
+                <li>
+                    <a [routerLink]="['/auth/login']">login</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</nav>

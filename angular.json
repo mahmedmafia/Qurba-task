@@ -28,6 +28,9 @@
               "src/assets"
             ],
             "styles": [
+              "src/assets/theme.scss",
+              "src/assets/flexClasses.scss",
+              "src/assets/styles.scss",
               "src/styles.scss"
             ],
             "scripts": []
