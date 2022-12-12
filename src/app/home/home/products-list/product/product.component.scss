@@ -1,9 +1,11 @@
 @import "../../../../../assets/theme.scss";
 
-:host{
+.card{
     position: relative;
     border-radius: 8px;
     color: #344054;
+    max-width: 300px;
+    min-width: 250px;
   &:after {
     content: "";
     top: 0;
@@ -94,3 +96,8 @@
     border-radius: 4px !important;
     margin-top: 10px;
   }
+@media only screen  and (max-width:600px) {
+  .card{
+    max-width: 100%;
+  }
+}
