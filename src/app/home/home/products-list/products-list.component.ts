@@ -9,8 +9,9 @@ import { ProductResponse, ProductsService } from 'src/app/shared/services/produc
 export class ProductsListComponent implements OnInit {
   ProductResponse!: ProductResponse;
   totalPages=0
-  currentPage=1;
+  currentPage=11;
   pagesArr:number[]=[];
+  median=0;
   constructor(private productServ: ProductsService) { }
 
   ngOnInit(): void {
@@ -19,6 +20,7 @@ export class ProductsListComponent implements OnInit {
       this.totalPages=Math.ceil(res.total/this.productServ.getLimit());
       this.pagesArr=[...Array(this.totalPages+1).keys()];
       this.pagesArr.splice(0,1);
+      this.median=this.totalPages/2;
     });
 
   }

@@ -1,14 +1,40 @@
 <section *ngIf="ProductResponse">
-    <main id="product-list">
-        <ng-container *ngFor="let product of ProductResponse.products">
-            <app-product [product]="product"></app-product>
-        </ng-container>
-    </main>
-    <div id="paging" *ngIf="pagesArr.length>1">
-        <span (click)="onChangePage(currentPage-1)"  *ngIf="currentPage>1"><</span>
-        <ng-container *ngFor="let page of pagesArr">
-            <span (click)="onChangePage(page)" [ngClass]="currentPage==(page)? 'selected' :'' ">{{page}}</span>
-        </ng-container>
-        <span (click)="onChangePage(currentPage-1)" *ngIf="currentPage<totalPages">></span>
-    </div>
+  <main id="product-list">
+    <ng-container *ngFor="let product of ProductResponse.products">
+      <app-product [product]="product"></app-product>
+    </ng-container>
+  </main>
+  <div id="paging" *ngIf="pagesArr.length > 1">
+    <span (click)="onChangePage(currentPage - 1)" *ngIf="currentPage > 1">
+      <
+    </span>
+    <ng-container *ngFor="let page of pagesArr">
+      <ng-container
+        *ngIf="
+          page == currentPage ||
+          (page > currentPage - 1 && page < currentPage + 1) ||
+          page == totalPages ||
+          page == 1
+        "
+      >
+        <ng-container
+        *ngIf="
+          (page != 1 && page > currentPage - 1 && currentPage - 1 > 1  )
+        "
+        ><span style="pointer-events: none" >....</span></ng-container
+      >
+        <span
+          (click)="onChangePage(page)"
+          [ngClass]="currentPage == page ? 'selected' : ''"
+        >
+          {{ page }}
+        </span>
+      </ng-container>
+    </ng-container>
+    <span
+      (click)="onChangePage(currentPage + 1)"
+      *ngIf="currentPage < totalPages"
+      >></span
+    >
+  </div>
 </section>
