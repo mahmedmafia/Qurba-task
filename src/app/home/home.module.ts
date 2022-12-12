@@ -7,12 +7,14 @@ import { ProductsListComponent } from './home/products-list/products-list.compon
 import { CategoryListComponent } from './home/category-list/category-list.component';
 import {ReactiveFormsModule,FormsModule} from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
+import { ProductComponent } from './home/products-list/product/product.component';
 
 @NgModule({
   declarations: [
     HomeComponent,
     ProductsListComponent,
-    CategoryListComponent
+    CategoryListComponent,
+    ProductComponent
   ],
   imports: [
     CommonModule,

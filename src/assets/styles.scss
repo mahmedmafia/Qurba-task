@@ -12,8 +12,15 @@
 }
 
 .container {
-  margin: auto;
-  width: 80%;
+  margin: 0 auto;
+  max-width: 91%;
+  padding:0px 15px;
+}
+@media only screen and (max-width:600px) {
+  .container{
+    max-width: 100%;
+
+  }
 }
 .nav-links{
     display: flex;

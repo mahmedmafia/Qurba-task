@@ -9,13 +9,12 @@ import { environment } from 'src/environments/environment';
 })
 export class AuthService {
   private token = '';
-  private user!: UserData
+  private user: UserData | null=null;
   private authApi = environment.api + '/auth/login';
   AuthSubject: BehaviorSubject<UserData | null> = new BehaviorSubject<UserData | null>(null);
   constructor(private http: HttpClient, private router: Router) {
     this.getToken();
     this.AuthSubject.next(this.user);
-    console.log('emitted');
   }
   login(userInfo: userLoginData) {
     return this.http
@@ -39,6 +38,9 @@ export class AuthService {
     this.router.navigate(['/home']);
   }
   LogOut() {
+    this.token='';
+    this.user=null;
+    this.router.navigate(['/auth/login']);
     this.AuthSubject.next(null);
     localStorage.clear();
   }

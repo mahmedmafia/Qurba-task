@@ -1,12 +1,11 @@
 nav {
   position: relative;
-  padding:0px;
-  >*{
-    padding-top:0px !important;
-    padding-bottom: 0px !important;
-    margin-top: 0px !important;
-    margin-bottom: 0px !important;
-  }
+  // >*{
+  //   padding-top:0px !important;
+  //   padding-bottom: 0px !important;
+  //   margin-top: 0px !important;
+  //   margin-bottom: 0px !important;
+  // }
 }
 nav::after {
   position: absolute;
@@ -15,6 +14,13 @@ nav::after {
   width: 100%;
   background-color: #424242;
   opacity: 0.5;
+}
+.navbar{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding:20px 0px ;
+
 }
 .navbar-brand {
   width:18%;
@@ -26,8 +32,51 @@ nav::after {
 }
 .nav-links {
   font-size: 1.2rem;
-  width:100%;
+}
+@media only screen and (max-width:600px){
+  .nav-links-container{
+    width:100%;
+    flex-direction: column;
+    align-items: flex-start;
+    >*{
+      margin-bottom: 15px;
+      width:100%
+    }
+  }
+  .nav-links{
+    font-size: 1em;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    *>{
+      margin-bottom: 10px;
+      width:100%;
+    }
+  }
+  #search-input{
+    margin-bottom: 10px;
+    input{
+      width: 100%;
+    }
 
+  }
+  #searchForm{
+    flex-direction:column;
+    margin-bottom: 10px;
+    width: 100%;
+  }
+  .navbar{
+    display: block;
+    .navbar-brand{
+      width:100%;
+      margin-bottom: 10px;
+    }
+
+  }
+  #account{
+    width: 100%;
+    flex-direction: row-reverse;
+  }
 }
 #searchForm {
   * {
@@ -49,8 +98,8 @@ nav::after {
   }
   #svg-search {
     position: absolute;
-    left:5px ;
-    top:5px;
+    left:2% ;
+    top:30%;
     cursor: none;
   }
 }
@@ -58,4 +107,15 @@ nav::after {
   transform:scale(1.1);
   margin-top: 2px;
   margin-right: 10px;
+}
+#acc-info{
+  ul{
+    position: absolute;
+    background: white;
+    z-index: 5;
+    border: 1px solid #9f9f9faa;
+    padding: 5px !important;
+    font-size: 10px;
+    width: 100%
+  }
 }

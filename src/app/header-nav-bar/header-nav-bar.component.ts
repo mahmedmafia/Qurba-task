@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { debounce, debounceTime, switchMap } from 'rxjs';
 import { AuthService, UserData } from '../shared/services/auth.service';
 import { ProductsService } from '../shared/services/products.service';
@@ -11,23 +12,36 @@ import { ProductsService } from '../shared/services/products.service';
 })
 export class HeaderNavBarComponent implements OnInit {
   userData: UserData | null = null;
-  searchForm!: FormGroup;
-  constructor(private authServ: AuthService, private prodServ: ProductsService) { }
+  searchForm!: FormGroup | null;
+  showList=false;
+  constructor(private authServ: AuthService,private router:Router ,private prodServ: ProductsService) { }
 
   ngOnInit(): void {
     this.authServ.AuthSubject.subscribe(res => {
       this.userData = res;
+      this.showList=false;
       if (this.userData) {
         this.searchForm = new FormGroup({
           searchTerm: new FormControl('')
         })
+      }else{
+        this.searchForm=null;
       }
     })
-    this.searchForm.controls['searchTerm'].valueChanges.pipe(
+    this.searchForm?.controls['searchTerm'].valueChanges.pipe(
       debounceTime(1000),
     ).subscribe(res => {
       this.prodServ.setSearch(res)
+      this.showList=false;
     })
+  }
+  logOut(){
+    this.router.navigate(['/auth']);
+    this.authServ.LogOut();
+  }
+  navigate(path:string){
+    this.showList=false;
+    this.router.navigate([path]);
   }
 
 }

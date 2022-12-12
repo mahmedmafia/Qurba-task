@@ -15,7 +15,6 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     if(this.authServ.isLoggedIn()){
-      console.log('yeah');
       this.router.navigate(['/home']);
     }
     this.loginForm = new FormGroup({

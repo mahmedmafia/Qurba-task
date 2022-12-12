@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { CartService } from 'src/app/shared/services/cart.service';
 import { ProductResponse, ProductsService } from 'src/app/shared/services/products.service';
 
 @Component({
@@ -12,7 +11,7 @@ export class ProductsListComponent implements OnInit {
   totalPages=0
   currentPage=1;
   pagesArr:number[]=[];
-  constructor(private productServ: ProductsService,private cartServ:CartService) { }
+  constructor(private productServ: ProductsService) { }
 
   ngOnInit(): void {
     this.productServ.onRequestParamsChanged().subscribe(res => {
@@ -29,8 +28,6 @@ export class ProductsListComponent implements OnInit {
       this.productServ.setPage(page);
     }
   }
-  addToCart(){
-    this.cartServ.AddToCart();
-  }
+
 
 }

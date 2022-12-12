@@ -1,0 +1,96 @@
+@import "../../../../../assets/theme.scss";
+
+:host{
+    position: relative;
+    border-radius: 8px;
+    color: #344054;
+  &:after {
+    content: "";
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    position: absolute;
+    opacity: 0.5;
+    border: 1px solid #424242;
+    border-radius: 8px;
+    overflow: hidden;
+    z-index: 2;
+    pointer-events: none;
+  }
+}
+  .card-body {
+    padding: 10px 15px;
+    .card-header {
+      .card-title {
+        margin-top: 5px;
+        margin-bottom: 8px;
+      }
+      .card-desc {
+        margin-bottom: 15px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+        -webkit-box-orient: vertical;
+      }
+    }
+  }
+  #orignalPrice {
+    margin-right: 15px;
+    position: relative;
+    &:after {
+      position: absolute;
+      left: 0;
+      content: "";
+      top: 46%;
+      width: 100%;
+      height: 1px;
+      background-color: #344054;
+      opacity: 0.8;
+      z-index: -12;
+    }
+  }
+  #product-rating {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    span {
+      color: #f4b000;
+      margin-right: 3px;
+      font-weight: 700;
+    }
+    #start-svg {
+      margin-top: 5px;
+      margin-right: 2px;
+      font-weight: 700;
+    }
+  }
+  .img-container {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    img {
+      width: 100%;
+      height: 100%;
+      border-radius: 8px;
+    }
+  }
+  #discount-overlay {
+    position: absolute;
+    top: 5%;
+    left: 15px;
+    z-index: 0;
+  }
+  .badge-primary {
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 12px;
+    width: 71px;
+    height: 23px;
+    color: #344054 !important;
+    cursor: default;
+  }
+  .btn-primary {
+    border-radius: 4px !important;
+    margin-top: 10px;
+  }

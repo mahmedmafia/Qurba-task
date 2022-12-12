@@ -1,4 +1,4 @@
-<section class="container ">
+<section>
     <h4>{{pathObject.SearchTerm}}</h4>
     <p id="pathString">
         <ng-container *ngFor="let key of keys;let i=index">
@@ -7,12 +7,8 @@
             </ng-container>
         </ng-container>
     </p>
-    <div class=" flex-row" id="home-layout">
-        <div id="categories">
-            <app-category-list></app-category-list>
-        </div>
-        <div id="products">
-            <app-products-list></app-products-list>
-        </div>
+    <div id="home-layout">
+        <app-category-list></app-category-list>
+        <app-products-list></app-products-list>
     </div>
 </section>

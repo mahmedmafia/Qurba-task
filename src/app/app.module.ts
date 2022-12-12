@@ -7,10 +7,12 @@ import { HeaderNavBarComponent } from './header-nav-bar/header-nav-bar.component
 import { SharedModule } from './shared/shared.module';
 import {HttpClientModule} from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FooterComponent } from './footer/footer.component';
 @NgModule({
   declarations: [
     AppComponent,
     HeaderNavBarComponent,
+    FooterComponent,
   ],
   imports: [
     FormsModule,
