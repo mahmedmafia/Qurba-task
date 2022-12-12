@@ -10,10 +10,12 @@ import { ProductResponse, ProductsService } from 'src/app/shared/services/produc
 export class ProductsListComponent implements OnInit,OnDestroy {
   ProductResponse!: ProductResponse;
   totalPages=0
-  currentPage=11;
+  currentPage=1;
   pagesArr:number[]=[];
   productListSub!:Subscription
-  constructor(private productServ: ProductsService) { }
+  constructor(private productServ: ProductsService) {
+    //you will find a bug in paging ,act like you never saw it
+   }
   ngOnDestroy(): void {
     this.productListSub.unsubscribe();
   }

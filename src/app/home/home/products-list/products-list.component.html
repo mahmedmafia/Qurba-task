@@ -17,11 +17,13 @@
           page == 1
         "
       >
+
         <ng-container
         *ngIf="
-          (page != 1 && page > currentPage - 1 && currentPage - 1 > 1  )
+        (page > currentPage + 1) ||
+          (page != 1 && page > currentPage - 1 && currentPage - 1 > 1 && currentPage+1<totalPages)
         "
-        ><span style="pointer-events: none" >....</span></ng-container
+        ><span style="pointer-events: none" >...</span></ng-container
       >
         <span
           (click)="onChangePage(page)"
