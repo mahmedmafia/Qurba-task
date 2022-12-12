@@ -17,6 +17,7 @@ export class HeaderNavBarComponent implements OnInit {
   constructor(private authServ: AuthService,private router:Router ,private prodServ: ProductsService) { }
 
   ngOnInit(): void {
+    // getting notifcation when userData Changed => user or null
     this.authServ.AuthSubject.subscribe(res => {
       this.userData = res;
       this.showList=false;
@@ -28,18 +29,20 @@ export class HeaderNavBarComponent implements OnInit {
         this.searchForm=null;
       }
     })
+    //search based on input and wait for latest input change to send rquest
     this.searchForm?.controls['searchTerm'].valueChanges.pipe(
       debounceTime(1000),
     ).subscribe(res => {
-      this.prodServ.setSearch(res)
+      this.prodServ.setSearch(res);
       this.showList=false;
     })
   }
   logOut(){
-    this.router.navigate(['/auth']);
+    //logout
     this.authServ.LogOut();
   }
   navigate(path:string){
+    //to close list on navigation
     this.showList=false;
     this.router.navigate([path]);
   }

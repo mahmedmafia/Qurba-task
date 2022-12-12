@@ -11,6 +11,9 @@ export class CategoryService {
   private categoryApi = environment.api + '/products/category';
   constructor(private http: HttpClient) { }
   getAllCategories():Observable<{data:CategoryInfo[],total:number}> {
+    //function summary
+    //1.getting all categories from the categories api that will get list of categories
+    //2.request the products of every category to know the count of products in Every Category
     return this.http.get<string[]>(this.AllCategories).pipe(
       mergeMap(x => from(x)),
       mergeMap(h=> this.getProductCategoriesCount(h).pipe(map(categoryInfo=>{

@@ -4,10 +4,10 @@
         <app-navbar-logo></app-navbar-logo>
         <h1>Log in to your account</h1>
         <p>Welcome back! Please enter your details.</p>
-        <div class="alert alert-danger" *ngIf="errMessage">
-            <p>{{errMessage}}</p>
-        </div>
         <form *ngIf="loginForm" [formGroup]="loginForm" (ngSubmit)="onLogin()">
+            <div class="alert-danger text-center" *ngIf="errMessage">
+                <p>{{errMessage}}</p>
+            </div>
             <div class="form-group">
                 <label>UserName</label>
                 <input type="text" formControlName="username" placeholder="Enter Your username">
